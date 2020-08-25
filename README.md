@@ -1,3 +1,6 @@
+[![Version: 0.1](https://img.shields.io/badge/Version-0.1-blue)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # SWEREF 99 map projection
 
 Python library for conversion between geodetic (latitude, longitude) coordinates and plane (N, E) grid coordinates.
