@@ -1,4 +1,4 @@
-[![Version: 0.1](https://img.shields.io/badge/Version-0.1-blue)]()
+[![Version: 0.2](https://img.shields.io/badge/Version-0.2-blue)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # SWEREF 99 map projection
@@ -12,7 +12,7 @@ applications. More details on the relationship between WGS 84 and SWEREF 99 can 
 [here](https://www.lantmateriet.se/sv/Kartor-och-geografisk-information/gps-geodesi-och-swepos/Referenssystem/Tredimensionella-system/SWEREF-99/).
 
 The map projection implementation is based on the [Gauss-Krügers](https://www.lantmateriet.se/sv/Kartor-och-geografisk-information/gps-geodesi-och-swepos/Om-geodesi/Formelsamling/)
-formula published by Lantmäteriet.
+formula as published by Lantmäteriet.
 
 ## Usage
 

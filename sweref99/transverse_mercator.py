@@ -40,28 +40,36 @@ class TransverseMercator(object):
         self.f = flattening
 
         self.e2 = self.f * (2 - self.f)
+        self.e4 = self.e2 ** 2
+        self.e6 = self.e2 ** 3
+        self.e8 = self.e2 ** 4
+
         self.n = self.f / (2 - self.f)
-        self.â = (self.a / (1 + self.n)) * (1 + 0.25 * self.n ** 2 + (1 / 64) * self.n ** 4)
+        self.n2 = self.n ** 2
+        self.n3 = self.n ** 3
+        self.n4 = self.n ** 4
 
-        self.A_star = (self.e2 + self.e2 ** 2 + self.e2 ** 3 + self.e2 ** 4)
-        self.B_star = (-1 / 6) * (7 * self.e2 ** 2 + 17 * self.e2 ** 4 + 30 * self.e2 ** 4)
-        self.C_star = (1 / 120) * (224 * self.e2 ** 3 + 889 * self.e2 ** 4)
-        self.D_star = (1 / 1260) * (4279 * self.e2 ** 4)
+        self.â = (self.a / (1 + self.n)) * (1 + 0.25 * self.n2 + (1 / 64) * self.n4)
 
-        self.δ1 = 0.5 * self.n - (2 / 3) * self.n ** 2 + (37 / 96) * self.n ** 3 - (1 / 360) * self.n ** 4
-        self.δ2 = (1 / 48) * self.n ** 2 + (1 / 15) * self.n ** 3 - (437 / 1440) * self.n ** 4
-        self.δ3 = (17 / 480) * self.n ** 3 - (37 / 840) * self.n ** 4
-        self.δ4 = (4397 / 161280) * self.n ** 4
+        self.A_star = (self.e2 + self.e4 + self.e6 + self.e8)
+        self.B_star = (-1 / 6) * (7 * self.e4 + 17 * self.e6 + 30 * self.e8)
+        self.C_star = (1 / 120) * (224 * self.e6 + 889 * self.e8)
+        self.D_star = (-1 / 1260) * (4279 * self.e8)
+
+        self.δ1 = 0.5 * self.n - (2 / 3) * self.n2 + (37 / 96) * self.n3 - (1 / 360) * self.n4
+        self.δ2 = (1 / 48) * self.n2 + (1 / 15) * self.n3 - (437 / 1440) * self.n4
+        self.δ3 = (17 / 480) * self.n3 - (37 / 840) * self.n4
+        self.δ4 = (4397 / 161280) * self.n4
 
         self.A = self.e2
-        self.B = (1 / 6) * (5 * self.e2 ** 2 - self.e2 ** 3)
-        self.C = (1 / 120) * (104 * self.e2 ** 3 - 45 * self.e2 ** 4)
-        self.D = (1 / 1260) * (1237 * self.e2 ** 4)
+        self.B = (1 / 6) * (5 * self.e4 - self.e6)
+        self.C = (1 / 120) * (104 * self.e6 - 45 * self.e8)
+        self.D = (1 / 1260) * (1237 * self.e8)
 
-        self.β1 = 0.5 * self.n - (2 / 3) * self.n ** 2 + (5 / 16) * self.n ** 3 + (41 / 180) * self.n ** 4
-        self.β2 = (13 / 48) * self.n ** 2 - (3 / 5) * self.n ** 3 + (557 / 1440) * self.n ** 4
-        self.β3 = (61 / 240) * self.n ** 3 - (103 / 140) * self.n ** 4
-        self.β4 = (49561 / 161280) * self.n ** 4
+        self.β1 = 0.5 * self.n - (2 / 3) * self.n2 + (5 / 16) * self.n3 + (41 / 180) * self.n4
+        self.β2 = (13 / 48) * self.n2 - (3 / 5) * self.n3 + (557 / 1440) * self.n4
+        self.β3 = (61 / 240) * self.n3 - (103 / 140) * self.n4
+        self.β4 = (49561 / 161280) * self.n4
 
     def grid_to_geodetic(self, northing, easting):
         """Convert from grid coordinates to geodetic coordinates.
